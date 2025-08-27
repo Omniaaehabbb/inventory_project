@@ -79,17 +79,3 @@ Warezo simplifies stock ordering for retail stores. Shops can log in, browse pro
 - Ratings & reviews for companies
 - EDI/Bulk order CSV with validator & error report
 
----
-
-## ▶️ Getting Started (Frontend placeholder)
-```bash
-# clone
-git clone https://github.com/<your-username>/warezo.git
-cd warezo
-
-# create with Vite (if starting fresh)
-npm create vite@latest . -- --template react-ts
-npm install
-
-# run dev
-npm run dev
