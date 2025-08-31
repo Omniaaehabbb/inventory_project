@@ -1,4 +1,4 @@
-## 🚀 Features & Functionalities
+## Features & Functionalities
 
 ### 1. Authentication
 - Sign Up / Login: Secure access for stores, warehouses, and admins.  
