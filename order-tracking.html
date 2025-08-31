@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warezo - Order Tracking</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css.map">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/orderTracking.css">
 </head>
@@ -11,55 +15,76 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <i class="fas fa-warehouse"></i> Warezo
-                </a>
-                <ul class="nav-links">
-                    <li><a href="pages/index.html">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="pages/order-tracking.html">Tracking</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <!-- <div class="auth-buttons">
-                    <a href="#" class="btn btn-outline">Login</a>
-                    <a href="#" class="btn btn-primary">Sign Up</a>
-                </div> -->
+            <nav class="navbar navbar-expand-lg navbar-light py-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand logo" href="#">
+                        <i class="fas fa-warehouse"></i> Warezo
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="order-tracking.html">Tracking</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <div class="container">
-        <h1 class="page-title">Order Tracking</h1>
+    <div class="container py-4">
+        <h1 class="page-title fw-bold">Order Tracking</h1>
         
         <!-- Order Header -->
         <div class="order-header">
-            <h2 class="order-number">Order #20240715-001</h2>
-            <div class="order-details">
-                <div class="detail-item">
-                    <span class="detail-label">Status</span>
-                    <span class="detail-value"><span class="status-badge">Out for Delivery</span></span>
+            <h2 class="order-number fw-bold">Order num 01</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value"><span class="status-badge">Out for Delivery</span></span>
+                    </div>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">Customer</span>
-                    <span class="detail-value">Retailer Solutions LLC</span>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="detail-item">
+                        <span class="detail-label">Customer</span>
+                        <span class="detail-value">Retailer Solutions LLC</span>
+                    </div>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">Order Date</span>
-                    <span class="detail-value">July 15, 2024</span>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="detail-item">
+                        <span class="detail-label">Order Date</span>
+                        <span class="detail-value">July 28, 2025</span>
+                    </div>
                 </div>
-                <div class="detail-item">
-                    <span class="detail-label">Total Amount</span>
-                    <span class="detail-value">$1,250.00</span>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="detail-item">
+                        <span class="detail-label">Total Amount</span>
+                        <span class="detail-value">25000 EGP</span>
+                    </div>
                 </div>
             </div>
         </div>
         
         <!-- Progress Section -->
         <div class="progress-section">
-            <h2 class="section-title">Order Progress</h2>
+            <h2 class="section-title fw-bold">Order Progress</h2>
             <div class="progress-tracker">
                 <div class="progress-line"></div>
                 
@@ -71,7 +96,7 @@
                     <div class="step-content">
                         <h3 class="step-title">Order Confirmed</h3>
                         <p class="step-description">Your order has been successfully placed and confirmed.</p>
-                        <p class="step-time">July 15, 2024, 10:00 AM</p>
+                        <p class="step-time">July 28, 2025, 10:00 AM</p>
                     </div>
                 </div>
                 
@@ -83,7 +108,7 @@
                     <div class="step-content">
                         <h3 class="step-title">Processing at Warehouse</h3>
                         <p class="step-description">Warehouse is preparing your order for shipment.</p>
-                        <p class="step-time">July 16, 2024, 02:30 PM</p>
+                        <p class="step-time">July 29, 2025, 02:30 PM</p>
                     </div>
                 </div>
                 
@@ -95,7 +120,7 @@
                     <div class="step-content">
                         <h3 class="step-title">Dispatched</h3>
                         <p class="step-description">Your order has been dispatched from the warehouse.</p>
-                        <p class="step-time">July 17, 2024, 09:00 AM</p>
+                        <p class="step-time">July 31, 2025, 09:00 AM</p>
                     </div>
                 </div>
                 
@@ -107,7 +132,7 @@
                     <div class="step-content">
                         <h3 class="step-title">In Transit</h3>
                         <p class="step-description">Your order is en route to the local distribution hub.</p>
-                        <p class="step-time">July 18, 2024, 07:45 PM</p>
+                        <p class="step-time">August 1, 2025, 07:45 PM</p>
                     </div>
                 </div>
                 
@@ -119,7 +144,7 @@
                     <div class="step-content">
                         <h3 class="step-title">Out for Delivery</h3>
                         <p class="step-description">Your order is with a local courier and is out for delivery today.</p>
-                        <p class="step-time">July 20, 2024, 08:30 AM</p>
+                        <p class="step-time">August 2, 2024, 08:30 AM</p>
                     </div>
                 </div>
                 
@@ -139,95 +164,117 @@
         
         <!-- Delivery Information -->
         <div class="delivery-info">
-            <h2 class="section-title">Delivery Information</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">Tracking Number</span>
-                    <span class="info-value">WZ4567891230EL</span>
+            <h2 class="section-title fw-bold">Delivery Information</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="info-item">
+                        <span class="info-label">Tracking Number</span>
+                        <span class="info-value">AAA123</span>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Carrier</span>
-                    <span class="info-value">Warezo Logistics</span>
+                <div class="col-md-4 mb-3">
+                    <div class="info-item">
+                        <span class="info-label">Carrier</span>
+                        <span class="info-value">Warezo Logistics</span>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Estimated Delivery</span>
-                    <span class="info-value">July 20, 2024, by 5:00 PM</span>
+                <div class="col-md-4 mb-3">
+                    <div class="info-item">
+                        <span class="info-label">Estimated Delivery</span>
+                        <span class="info-value">august 2, 2025, by 5:00 PM</span>
+                    </div>
                 </div>
             </div>
         </div>
         
         <!-- Support Section -->
         <div class="support-section">
-            <h2 class="support-title">Need Help?</h2>
+            <h2 class="support-title fw-bold">Need Help?</h2>
             <p class="support-description">Contact our support team for any inquiries regarding your order.</p>
             
-            <div class="contact-methods">
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <span class="contact-detail">01032238839</span>
+                        <span class="contact-type">Phone Support</span>
                     </div>
-                    <span class="contact-detail">+1 (800) 123-4567</span>
-                    <span class="contact-type">Phone Support</span>
                 </div>
                 
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                <div class="col-md-6 col-lg-4">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span class="contact-detail">support@warezo.com</span>
+                        <span class="contact-type">Email Support</span>
                     </div>
-                    <span class="contact-detail">support@warezo.com</span>
-                    <span class="contact-type">Email Support</span>
                 </div>
             </div>
             
-            <a href="#" class="btn btn-primary">Contact Support</a>
+            <a href="#" class="btn btn-primary btn-lg px-4">Contact Support</a>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Developers</a></li>
-                    </ul>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Developers</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Disclaimer</a></li>
-                    </ul>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Connect</h3>
-                    <ul>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="footer-column">
+                        <h3>Connect</h3>
+                        <ul>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Warezo. All rights reserved. Made with Visily</p>
+                <p>&copy; 2024 Warezo. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+     <script src="assets/js/bootstrap.min.js"></script>
+     <script src="assets/js/bootstrap.min.js.map"></script>
 </body>
 </html>

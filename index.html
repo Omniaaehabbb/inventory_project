@@ -4,27 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warezo - Your Direct Connection to Warehouses & Wholesale Products</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css.map">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
     <header>
         <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <i class="fas fa-warehouse"></i> Warezo
-                </a>
-                <ul class="nav-links">
-                    <li><a href="pages/index.html">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="pages/order-tracking.html">Tracking</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <div class="auth-buttons">
-                    <a href="pages/login.html" class="btn btn-outline">Login</a>
-                    <a href="pages/login.html" class="btn btn-primary">Sign Up</a>
+            <nav class="navbar navbar-expand-lg navbar-light py-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand logo" href="#">
+                        <i class="fas fa-warehouse"></i> Warezo
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="order-tracking.html">Tracking</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                        <div class="d-flex ms-lg-3">
+                            <a href="login.html" class="btn btn-outline me-2">Login</a>
+                            <a href="login.html" class="btn btn-primary">Sign Up</a>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -33,13 +53,21 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Your Direct Connection to Warehouses & Wholesale Products</h1>
-            <p>Warezo streamlines procurement for retailers, offering a vast product catalog, flexible payments, and real-time delivery tracking. Transform your supply chain with unparalleled efficiency.</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-light">Sign Up Now</a>
-                <a href="#" class="btn btn-outline">Learn More</a>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Your Direct Connection to Warehouses & Wholesale Products</h1>
+                    <p class="lead mb-5">Warezo streamlines procurement for retailers, offering a vast product catalog, flexible payments, and real-time delivery tracking. Transform your supply chain with unparalleled efficiency.</p>
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3 hero-buttons">
+                        <a href="login.html" class="btn btn-light btn-lg px-4 py-2">Sign Up Now</a>
+                        <a href="login.html" class="btn btn-outline btn-lg px-4 py-2">Learn More</a>
+                    </div>
+                </div>
             </div>
-            <img src="assets/images/Selection.png" alt="">
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8 text-center">
+                    <img src="assets/images/Selection.png" alt="Warezo Selection" class="img-fluid mt-5">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -47,28 +75,36 @@
     <section class="stats">
         <div class="container">
             <div class="section-title">
-                <h2>Streamline Your Business with Warezo</h2>
+                <h2 class="display-5 fw-bold mb-3">Streamline Your Business with Warezo</h2>
             </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">86%</div>
-                    <h3 class="stat-title">Streamlined Operations</h3>
-                    <p class="stat-desc">Comprehensive product discovery, ordering, and management, reducing manual tasks and enhancing efficiency.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-number">86%</div>
+                        <h3 class="stat-title">Streamlined Operations</h3>
+                        <p class="stat-desc">Comprehensive product discovery, ordering, and management, reducing manual tasks and enhancing efficiency.</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <h3 class="stat-title">Flexible Payment Options</h3>
-                    <p class="stat-desc">Support various payment methods including cash, mobile wallets, and cards to fit your business needs.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <h3 class="stat-title">Flexible Payment Options</h3>
+                        <p class="stat-desc">Support various payment methods including cash, mobile wallets, and cards to fit your business needs.</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">600+</div>
-                    <h3 class="stat-title">Extensive Product Catalog</h3>
-                    <p class="stat-desc">Browse and discover a comprehensive range of products from multiple suppliers, all in one place.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-number">600+</div>
+                        <h3 class="stat-title">Extensive Product Catalog</h3>
+                        <p class="stat-desc">Browse and discover a comprehensive range of products from multiple suppliers, all in one place.</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">Real-time</div>
-                    <h3 class="stat-title">Order Tracking</h3>
-                    <p class="stat-desc">Gain full visibility into delivery status with real-time updates and notifications for every order.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="stat-card">
+                        <div class="stat-number">Real-time</div>
+                        <h3 class="stat-title">Order Tracking</h3>
+                        <p class="stat-desc">Gain full visibility into delivery status with real-time updates and notifications for every order.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,25 +114,31 @@
     <section class="features">
         <div class="container">
             <div class="section-title">
-                <h2>Direct Warehouse Connection</h2>
-                <p>Connect directly with a wide network of warehouses, accessing diverse product catalogs without intermediaries.</p>
+                <h2 class="display-5 fw-bold mb-3">Direct Warehouse Connection</h2>
+                <p class="lead">Connect directly with a wide network of warehouses, accessing diverse product catalogs without intermediaries.</p>
             </div>
             
-            <div class="feature-cards">
-                <div class="feature-card">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <h3>Accelerated Procurement</h3>
-                    <p>Speed up your entire procurement cycle from selection to delivery, ensuring timely stock replenishment.</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-tachometer-alt mb-3"></i>
+                        <h3>Accelerated Procurement</h3>
+                        <p>Speed up your entire procurement cycle from selection to delivery, ensuring timely stock replenishment.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-search"></i>
-                    <h3>Product Discovery</h3>
-                    <p>Easily find and compare products from multiple warehouses with our powerful search and filtering tools.</p>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-search mb-3"></i>
+                        <h3>Product Discovery</h3>
+                        <p>Easily find and compare products from multiple warehouses with our powerful search and filtering tools.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-truck"></i>
-                    <h3>Fast Delivery</h3>
-                    <p>Get your products delivered quickly with our optimized logistics network and warehouse partnerships.</p>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-truck mb-3"></i>
+                        <h3>Fast Delivery</h3>
+                        <p>Get your products delivered quickly with our optimized logistics network and warehouse partnerships.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,47 +148,55 @@
     <section class="how-it-works">
         <div class="container">
             <div class="section-title">
-                <h2>How Warezo Works: Simple & Efficient</h2>
+                <h2 class="display-5 fw-bold mb-3">How Warezo Works: Simple & Efficient</h2>
             </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Sign Up & Discover</h3>
-                    <p>Create your account and explore thousands of products from various warehouses.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Sign Up & Discover</h3>
+                        <p>Create your account and explore thousands of products from various warehouses.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Order with Ease</h3>
-                    <p>Add products to your cart, choose from multiple payment options, and confirm your order.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Order with Ease</h3>
+                        <p>Add products to your cart, choose from multiple payment options, and confirm your order.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Track Your Delivery</h3>
-                    <p>Monitor your order's journey with real-time updates until it reaches your location.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Track Your Delivery</h3>
+                        <p>Monitor your order's journey with real-time updates until it reaches your location.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Manage & Grow</h3>
-                    <p>Access order history, manage inventory, and optimize your business with insights.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Manage & Grow</h3>
+                        <p>Access order history, manage inventory, and optimize your business with insights.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="testimonial">
-                <p>"Warezo has revolutionized our inventory management. Ordering is seamless, and the tracking feature keeps us perfectly informed. It's an indispensable tool for our business."</p>
-                <div class="author">Sarah Johnson</div>
-                <div class="position">Owner, Urban Fresh Market</div>
-            </div>
+            <!-- <div class="testimonial">
+                <p class="fs-5">"Warezo has revolutionized our inventory management. Ordering is seamless, and the tracking feature keeps us perfectly informed. It's an indispensable tool for our business."</p>
+                <div class="author fs-6 fw-bold mt-3">Sarah Johnson</div>
+                <div class="position text-muted">Owner, Urban Fresh Market</div>
+            </div> -->
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <h2>Ready to Elevate Your Retail Business?</h2>
-            <p>Join thousands of retailers who are transforming their supply chain with Warezo</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-light">Sign Up Now</a>
-                <a href="#" class="btn btn-outline">Contact Sales</a>
+            <h2 class="display-5 fw-bold mb-3">Ready to Elevate Your Retail Business?</h2>
+            <p class="lead mb-5">Join thousands of retailers who are transforming their supply chain with Warezo</p>
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3 hero-buttons">
+                <a href="login.html" class="btn btn-light btn-lg px-4 py-2">Sign Up Now</a>
+                <a href="login.html" class="btn btn-outline btn-lg px-4 py-2">Contact Sales</a>
             </div>
         </div>
     </section>
@@ -154,48 +204,60 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Developers</a></li>
-                    </ul>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Developers</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Disclaimer</a></li>
-                    </ul>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Connect</h3>
-                    <ul>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-column">
+                        <h3>Connect</h3>
+                        <ul>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Warezo. All rights reserved. Made with Visily</p>
+                <p>&copy; 2024 Warezo. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js.map"></script>
 </body>
 </html>
