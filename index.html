@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-flex bg-light vh-100 p-3 sidebar flex-column">
+                <div>
+                    <img src="./image.png" alt="Logo" class="img-fluid mb-4" width="70px">
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link">🏛 Store Dashboard</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link">📦 Product Catalog</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link">🛒 Orders</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link">🚚 Order Tracking</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link">⚙️ Profile Settings</a></li>
+                    </ul>
+                    <button class="logout-btn">Logout</button>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="col-md-10">
+
+                <!-- Navbar -->
+
+                <nav class="navbar navbar-light bg-white p-3 mb-3 shadow-sm d-flex justify-content-between">
+                    <button class="btn btn-outline-secondary d-md-none" data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebarMenu">☰</button>
+                    <form class="d-flex w-50">
+                        <input class="form-control me-2" type="search" placeholder="Search products, warehouses...">
+                    </form>
+                    <div>
+                        <button class="btn btn-light me-3">🔔</button>
+                        <img src="user.jpg" alt="User" class="rounded-circle" width="40">
+                    </div>
+                </nav>
+
+                <div class="row">
+                    <!-- Filters -->
+                    <div class="col-lg-3 mb-3">
+                        <h5>Filters</h5>
+                        <div class="mb-3">
+                            <h6>Categories</h6>
+                            <div><input type="checkbox"> Fruits & Vegetables</div>
+                            <div><input type="checkbox"> Dairy & Eggs</div>
+                            <div><input type="checkbox"> Packaged Goods</div>
+                            <div><input type="checkbox"> Beverages</div>
+                            <div><input type="checkbox"> Bakery</div>
+                        </div>
+                        <div class="mb-3">
+                            <h6>Warehouse Proximity</h6>
+                            <div><input type="checkbox" name="distance"> Local (Within 10 miles)</div>
+                            <div><input type="checkbox" name="distance"> Regional (10-50 miles)</div>
+                            <div><input type="checkbox" name="distance"> National (50+ miles)</div>
+                        </div>
+                        <div>
+                            <h6>Price Range</h6>
+                            <input type="range" name="price" id="priceRange" min="0" max="100" step="5"
+                                class="form-range">
+                            <div class="d-flex justify-content-between">
+                                <span>$0</span>
+                                <span>$100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="col-9">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5>All Products</h5>
+                            <select class="form-select w-auto">
+                                <option>Sort by: Relevance</option>
+                            </select>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <!-- Product 1 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="apple.jpg" class="card-img-top" alt="Organic Gala">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Organic Gala</h6>
+                                        <p class="card-text">Crisp and sweet organic apples, perfect for snacks.</p>
+                                        <p class="fw-bold">$24.99 / 20kg box</p>
+                                        <small class="text-muted">City Central Warehouse<br>5 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 2 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="banana.jpg" class="card-img-top" alt="Bananas">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Bananas</h6>
+                                        <p class="card-text">Fresh yellow bananas sourced locally.</p>
+                                        <p class="fw-bold">$19.99 / 15kg box</p>
+                                        <small class="text-muted">East Warehouse<br>8 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 3 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="milk.jpg" class="card-img-top" alt="Whole Milk">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Whole Milk</h6>
+                                        <p class="card-text">Creamy whole milk packed fresh daily.</p>
+                                        <p class="fw-bold">$29.99 / 24L</p>
+                                        <small class="text-muted">North Warehouse<br>10 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 4 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="bread.jpg" class="card-img-top" alt="Bread Loaf">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Bread Loaf</h6>
+                                        <p class="card-text">Soft and fresh bakery bread loafs daily.</p>
+                                        <p class="fw-bold">$14.99 / 10 loaves</p>
+                                        <small class="text-muted">City Central Warehouse<br>3 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 5 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="juice.jpg" class="card-img-top" alt="Orange Juice">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Orange Juice</h6>
+                                        <p class="card-text">100% pure and fresh orange juice bottles.</p>
+                                        <p class="fw-bold">$34.99 / 12 bottles</p>
+                                        <small class="text-muted">South Warehouse<br>6 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 6 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="eggs.jpg" class="card-img-top" alt="Organic Eggs">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Organic Eggs</h6>
+                                        <p class="card-text">Cage-free organic eggs with rich taste.</p>
+                                        <p class="fw-bold">$12.99 / 30 eggs</p>
+                                        <small class="text-muted">West Warehouse<br>7 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 7 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="carrots.jpg" class="card-img-top" alt="Carrots">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Carrots</h6>
+                                        <p class="card-text">Fresh crunchy carrots, perfect for cooking.</p>
+                                        <p class="fw-bold">$9.99 / 10kg</p>
+                                        <small class="text-muted">East Warehouse<br>9 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 8 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="rice.jpg" class="card-img-top" alt="Basmati Rice">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Basmati Rice</h6>
+                                        <p class="card-text">Premium aged basmati rice, extra-long grains.</p>
+                                        <p class="fw-bold">$49.99 / 25kg</p>
+                                        <small class="text-muted">North Warehouse<br>15 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 9 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="pasta.jpg" class="card-img-top" alt="Pasta Pack">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Pasta Pack</h6>
+                                        <p class="card-text">Durum wheat pasta packs, ready to cook.</p>
+                                        <p class="fw-bold">$22.99 / 12 packs</p>
+                                        <small class="text-muted">Central Warehouse<br>4 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 10 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="chicken.jpg" class="card-img-top" alt="Chicken">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Fresh Chicken</h6>
+                                        <p class="card-text">Freshly processed chicken, farm raised.</p>
+                                        <p class="fw-bold">$59.99 / 10kg</p>
+                                        <small class="text-muted">South Warehouse<br>12 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 11 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="cheese.jpg" class="card-img-top" alt="Cheddar Cheese">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Cheddar Cheese</h6>
+                                        <p class="card-text">Rich, creamy cheddar cheese for all recipes.</p>
+                                        <p class="fw-bold">$39.99 / 5kg</p>
+                                        <small class="text-muted">Central Warehouse<br>5 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product 12 -->
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="butter.jpg" class="card-img-top" alt="Butter">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Butter</h6>
+                                        <p class="card-text">Creamy, smooth butter from fresh milk.</p>
+                                        <p class="fw-bold">$29.99 / 2kg</p>
+                                        <small class="text-muted">West Warehouse<br>6 miles away</small>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <button class="btn btn-primary w-100">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Offcanvas Sidebar (Mobile) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Dashboard</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link">🏛 Store Dashboard</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link">📦 Product Catalog</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link">🛒 Orders</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link">🚚 Order Tracking</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link">⚙️ Profile Settings</a></li>
+            </ul>
+            <button class="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <!-- <button class="logout-btn">Logout</button> -->
+
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+    
+        
+        // 1️⃣ زرار تسجيل الخروج Logout
+        
+        const logoutBtn = document.querySelectorAll('.logout-btn');
+        logoutBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const confirmLogout = confirm('Are you sure you want to logout?');
+                if (confirmLogout) {
+                    alert('You have been logged out successfully!');
+                   
+                }
+            });
+        });
+
+
+       
+        // 2️⃣ نظام Add to Cart بسيط
+        
+        const cartButtons = document.querySelectorAll('.btn-primary');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // تحديث شكل الأزرار عند التحميل
+        cartButtons.forEach((btn) => {
+            const productTitle = btn.closest('.card').querySelector('.card-title').textContent;
+            if (cart.includes(productTitle)) {
+                btn.textContent = 'Remove from Cart';
+                btn.classList.replace('btn-primary', 'btn-danger');
+            }
+
+            btn.addEventListener('click', () => {
+                const product = productTitle;
+                if (cart.includes(product)) {
+                    cart = cart.filter(item => item !== product);
+                    btn.textContent = 'Add to Cart';
+                    btn.classList.replace('btn-danger', 'btn-primary');
+                } else {
+                    cart.push(product);
+                    btn.textContent = 'Remove from Cart';
+                    btn.classList.replace('btn-primary', 'btn-danger');
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+            });
+        });
+
+        // إنشاء عداد للسلة في النافبار
+        const navbar = document.querySelector('.navbar div');
+        const cartCount = document.createElement('span');
+        cartCount.style.fontWeight = 'bold';
+        cartCount.style.marginLeft = '10px';
+        navbar.appendChild(cartCount);
+
+        function updateCartCount() {
+            cartCount.textContent = `🛒 ${cart.length}`;
+        }
+        updateCartCount();
+
+
+       
+        // 3️⃣ البحث عن المنتجات (Search)
+       
+        const searchInput = document.querySelector('input[type="search"]');
+        const allProducts = document.querySelectorAll('.card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const searchText = e.target.value.toLowerCase();
+                allProducts.forEach(product => {
+                    const title = product.querySelector('.card-title').textContent.toLowerCase();
+                    product.style.display = title.includes(searchText) ? '' : 'none';
+                });
+            });
+        }
+
+
+      
+        // 4️⃣فلترة المنتجات 
+       
+
+        // تجميع بيانات كل منتج
+        const productCards = document.querySelectorAll('.card');
+        const productsData = [];
+
+        productCards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const description = card.querySelector('.card-text')?.textContent.toLowerCase() || "";
+            const priceText = card.querySelector('.fw-bold')?.textContent || "$0";
+            const warehouseText = card.querySelector('.text-muted')?.textContent.toLowerCase() || "";
+
+            const priceMatch = priceText.match(/\$([0-9.]+)/);
+            const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+
+            const distanceMatch = warehouseText.match(/(\d+)\s*miles/);
+            const distance = distanceMatch ? parseInt(distanceMatch[1]) : 0;
+
+            let category = "others";
+            if (description.includes('apple') || description.includes('banana') || description.includes('carrot'))
+                category = "fruits & vegetables";
+            else if (description.includes('milk') || description.includes('egg') || description.includes('cheese') || description.includes('butter'))
+                category = "dairy & eggs";
+            else if (description.includes('pasta') || description.includes('rice') || description.includes('bread'))
+                category = "bakery";
+            else if (description.includes('juice'))
+                category = "beverages";
+            else
+                category = "packaged goods";
+
+            productsData.push({ card, title, category, distance, price });
+        });
+
+
+        // عناصر التحكم (checkboxes + range)
+        const categoryFilters = document.querySelectorAll('.mb-3 input[type="checkbox"]:not([name="distance"])');
+        const distanceFilters = document.querySelectorAll('input[name="distance"]');
+        const priceRange = document.getElementById('priceRange');
+
+        // دالة الفلترة
+        function filterProducts() {
+            const selectedCategories = Array.from(categoryFilters)
+                .filter(c => c.checked)
+                .map(c => c.parentElement.textContent.trim().toLowerCase());
+
+            const selectedDistances = Array.from(distanceFilters)
+                .filter(c => c.checked)
+                .map(c => c.parentElement.textContent.toLowerCase());
+
+            const maxPrice = parseFloat(priceRange?.value || Infinity);
+
+            productsData.forEach(p => {
+                let visible = true;
+
+                if (selectedCategories.length > 0 && !selectedCategories.includes(p.category))
+                    visible = false;
+
+                if (selectedDistances.length > 0) {
+                    if (selectedDistances.includes('local') && p.distance > 10) visible = false;
+                    if (selectedDistances.includes('regional') && (p.distance < 10 || p.distance > 50)) visible = false;
+                    if (selectedDistances.includes('national') && p.distance <= 50) visible = false;
+                }
+
+                if (p.price > maxPrice)
+                    visible = false;
+
+                p.card.parentElement.style.display = visible ? '' : 'none';
+            });
+        }
+
+        // تفعيل الفلترة عند التغيير
+        categoryFilters.forEach(c => c.addEventListener('change', filterProducts));
+        distanceFilters.forEach(c => c.addEventListener('change', filterProducts));
+        if (priceRange) priceRange.addEventListener('input', filterProducts);
+
+    </script>
+
+</body>
+
+</html>
