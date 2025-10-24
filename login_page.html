@@ -2,154 +2,245 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Warezo — Auth</title>
-
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Inter font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Warezo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
   <style>
-    :root{
-      --card-radius: 16px;
-      --brand:#0d6efd; 
-      --ink:#0b1320;
-      --muted:#6c757d;
-      --bg:#f3f5f8;
+    :root {
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --muted: #6c757d;
+      --primary: #0d6efd;
+      --shadow: rgba(13, 110, 253, 0.08);
     }
-    body{font-family: "Inter", sans-serif;background:var(--bg);color:var(--ink)}
 
-    .app-bar{height:64px;background:#fff;border-bottom:1px solid #e9eef3}
-    .brand{display:flex;align-items:center;gap:.5rem;font-weight:600;color:var(--brand);text-decoration:none}
-    .brand .logo-dot{width:24px;height:24px;border-radius:6px;background:var(--brand);display:inline-block}
+    body {
+      background: var(--bg);
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      direction: ltr;
+    }
 
-    .stage{max-width:1180px;margin-inline:auto;padding:36px 20px}
-    .canvas{background:#fff;border:1px solid #e9eef3;border-radius:20px;padding:42px;min-height:560px}
+    .auth-container {
+      background: var(--card);
+      border-radius: 15px;
+      box-shadow: 0 8px 30px var(--shadow);
+      display: flex;
+      max-width: 920px;
+      width: 100%;
+      overflow: hidden;
+      transition: transform .2s ease;
+    }
 
-    .hero-img{border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(16,24,40,.06);height:100%}
-    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .auth-container:hover { transform: translateY(-3px); }
 
-    .panel{max-width:440px;margin-left:auto;border:1px solid #e9eef3;border-radius:var(--card-radius);box-shadow:0 8px 32px rgba(16,24,40,.08)}
-    .panel .card-body{padding:28px}
-    .panel h1{font-size:1.45rem;margin:0 0 .25rem 0;font-weight:700}
-    .panel .sub{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+    .auth-image {
+      width: 48%;
+      background-color: #e9ecef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
 
-    .switcher{display:flex;gap:10px;margin-bottom:18px}
-    .switcher .btn{flex:1 1 0;border-radius:8px;font-weight:600}
-    .switcher .btn-outline-primary{border-color:#e7ecf2;color:#344054;background:#f6f8fb}
-    .switcher .btn-primary{background:var(--brand);border-color:var(--brand)}
+    .auth-image img {
+      max-width: 100%;
+      border-radius: 10px;
+      animation: floatImage 3s ease-in-out infinite alternate;
+    }
 
-    .form-label{font-weight:600;font-size:.85rem;color:#2b3442}
-    .form-control{height:44px;border-color:#e3e8ef}
-    .form-control:focus{border-color:var(--brand);box-shadow:0 0 0 .2rem rgba(13,110,253,.15)}
+    @keyframes floatImage {
+      from { transform: translateY(0); }
+      to { transform: translateY(-8px); }
+    }
 
-    .btn-login{height:44px;border-radius:10px;font-weight:600}
-    .forgot{font-size:.8rem}
-    .legal{font-size:.78rem;color:var(--muted)}
+    .auth-forms { width: 52%; padding: 40px; }
 
-    @media (max-width: 991.98px){
-      .canvas{padding:28px}
-      .panel{margin-inline:auto}
-      .stage{padding-inline:14px}
-      .hero-col{order:2}
-      .form-col{order:1}
+    .auth-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .form-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .password-wrapper { position: relative; }
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .btn-primary, .btn-outline-primary {
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+    }
+
+    .btn-primary:hover,
+    .btn-outline-primary:hover {
+      background-color: var(--primary) !important;
+      color: #fff !important;
+      border-color: var(--primary) !important;
+      transform: scale(1.05);
+    }
+
+    .auth-buttons .btn.active {
+      background-color: var(--primary) !important;
+      color: #fff !important;
+      border-color: var(--primary) !important;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+
+    .auth-buttons .btn:not(.active) {
+      background-color: #fff !important;
+      color: var(--primary) !important;
+      border-color: var(--primary) !important;
+      box-shadow: none;
+    }
+
+    .shake-page {
+      animation: shakePage 0.35s cubic-bezier(.36,.07,.19,.97);
+    }
+
+    @keyframes shakePage {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      75% { transform: translateX(-2px); }
+    }
+
+    @media (max-width: 768px) {
+      .auth-container { flex-direction: column; }
+      .auth-image { display: none; }
+      .auth-forms { width: 100%; padding: 24px; }
     }
   </style>
 </head>
+
 <body>
-  <!-- Top bar -->
-  <header class="app-bar d-flex align-items-center">
-    <div class="container-fluid px-4">
-      <a href="#" class="brand">
-        <span class="logo-dot"></span>
-        <span>Warezo</span>
-      </a>
+  <div class="auth-container" id="auth-container">
+    <div class="auth-image">
+      <img id="auth-image" src="../inventory_project/assets/images/image-login.png" alt="Login illustration" />
     </div>
-  </header>
 
-  <main class="stage">
-    <div class="canvas">
-      <div class="row g-4 align-items-start">
-        
-        <!-- Image -->
-        <div class="col-lg-6 hero-col">
-          <div class="hero-img">
-            <img id="auth-image" src="../inventory_project/assets/images/image-login.png" alt="Login Image" />
-          </div>
+    <div class="auth-forms">
+      <div id="alert-box" class="alert d-none text-center" role="alert"></div>
+
+      <div class="auth-buttons">
+        <button id="btn-login" class="btn btn-primary active">Login</button>
+        <button id="btn-signup" class="btn btn-outline-primary">Sign Up</button>
+      </div>
+
+      <h2 id="form-title" class="form-title">Welcome Back 👋</h2>
+      <p id="form-sub" class="form-sub">Please login to access your dashboard</p>
+
+      <!-- Login Form -->
+      <form id="login-form" novalidate>
+        <div class="mb-3">
+          <label for="login-email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="login-email" placeholder="Enter your email" required />
         </div>
-
-        <!-- Form -->
-        <div class="col-lg-6 form-col d-flex justify-content-center">
-          <div class="card panel w-100">
-            <div class="card-body">
-              <h1 id="form-title">Welcome to Warezo</h1>
-              <div class="sub" id="form-sub">Enter your details to get started</div>
-
-              <!-- Switch buttons -->
-              <div class="switcher">
-                <button id="btn-login" type="button" class="btn btn-primary">Login</button>
-                <button id="btn-signup" type="button" class="btn btn-outline-primary">Sign Up</button>
-              </div>
-
-              <!-- Login Form -->
-              <form id="login-form" action="Store_Dashboard.html" method="get">
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email Address</label>
-                  <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required>
-                </div>
-                <div class="mb-2">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" id="password" class="form-control" placeholder="••••••••" required>
-                </div>
-                <div class="d-grid mt-3">
-                  <button class="btn btn-primary btn-login" type="submit">Login</button>
-                </div>
-                <div class="text-end mt-2">
-                  <a class="forgot text-decoration-none" href="#">Forgot Password?</a>
-                </div>
-              </form>
-
-              <!-- Sign Up Form -->
-              <form id="signup-form" class="d-none">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Full Name</label>
-                  <input type="text" id="name" class="form-control" placeholder="John Doe" required>
-                </div>
-                <div class="mb-3">
-                  <label for="signup-email" class="form-label">Email Address</label>
-                  <input type="email" id="signup-email" class="form-control" placeholder="your.email@example.com" required>
-                </div>
-                <div class="mb-2">
-                  <label for="signup-password" class="form-label">Password</label>
-                  <input type="password" id="signup-password" class="form-control" placeholder="••••••••" required>
-                </div>
-                <div class="mb-2">
-                  <label for="signup-confirm" class="form-label">Confirm Password</label>
-                  <input type="password" id="signup-confirm" class="form-control" placeholder="••••••••" required>
-                </div>
-                <div class="d-grid mt-3">
-                  <button class="btn btn-primary btn-login" type="submit">Sign Up</button>
-                </div>
-              </form>
-
-              <p class="legal mt-4 mb-0">
-                By continuing, you agree to Warezo's
-                <a href="#" class="text-decoration-none">Terms of Service</a> &
-                <a href="#" class="text-decoration-none">Privacy Policy</a>.
-              </p>
-            </div>
+        <div class="mb-3 password-wrapper">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="login-password" placeholder="Enter your password" required />
+          <i class="bi bi-eye-slash toggle-password" title="Show / hide"></i>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="remember-me">
+            <label class="form-check-label" for="remember-me">Remember me</label>
           </div>
+          <a href="#" id="forgot-password" class="text-decoration-none text-primary">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signup-form" class="d-none" novalidate>
+        <div class="mb-3">
+          <label for="signup-name" class="form-label">Full name</label>
+          <input type="text" class="form-control" id="signup-name" placeholder="Enter your full name" required />
+        </div>
+        <div class="mb-3">
+          <label for="signup-email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="signup-email" placeholder="Enter your email" required />
+        </div>
+        <div class="mb-3 password-wrapper">
+          <label for="signup-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="signup-password" placeholder="Create a password" required />
+          <i class="bi bi-eye-slash toggle-password" title="Show / hide"></i>
+        </div>
+        <div class="mb-3 password-wrapper">
+          <label for="signup-confirm" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="signup-confirm" placeholder="Confirm password" required />
+          <i class="bi bi-eye-slash toggle-password" title="Show / hide"></i>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotModal" tabindex="-1" aria-labelledby="forgotModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="forgotModalLabel">Reset Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="forgot-form" novalidate>
+            <div class="mb-3">
+              <label for="forgot-email" class="form-label">Enter your registered email</label>
+              <input type="email" class="form-control" id="forgot-email" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send reset link (demo)</button>
+          </form>
+          <p id="reset-message" class="text-center mt-3 text-success d-none">✅ Reset link sent (local demo)</p>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
+    // redirect if already logged in
+    if (localStorage.getItem("loggedIn") === "true" || sessionStorage.getItem("loggedIn") === "true") {
+      window.location.href = "Store_Dashboard.html";
+    }
+
+    async function hashPassword(password) {
+      const enc = new TextEncoder();
+      const data = enc.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
     const btnLogin = document.getElementById("btn-login");
     const btnSignup = document.getElementById("btn-signup");
     const loginForm = document.getElementById("login-form");
@@ -157,30 +248,151 @@
     const authImage = document.getElementById("auth-image");
     const formTitle = document.getElementById("form-title");
     const formSub = document.getElementById("form-sub");
+    const forgotPasswordLink = document.getElementById("forgot-password");
+    const forgotModal = new bootstrap.Modal(document.getElementById("forgotModal"));
+    const forgotForm = document.getElementById("forgot-form");
+    const resetMessage = document.getElementById("reset-message");
+    const alertBox = document.getElementById("alert-box");
+    const authContainer = document.getElementById("auth-container");
 
-    btnLogin.addEventListener("click", () => {
-      loginForm.classList.remove("d-none");
+    function showAlert(message, type = "danger", timeout = 2600) {
+      alertBox.textContent = message;
+      alertBox.className = `alert alert-${type} text-center`;
+      alertBox.classList.remove("d-none");
+      if (timeout) setTimeout(() => alertBox.classList.add("d-none"), timeout);
+    }
+
+    function triggerShake() {
+      authContainer.classList.remove("shake-page");
+      void authContainer.offsetWidth;
+      authContainer.classList.add("shake-page");
+      setTimeout(() => authContainer.classList.remove("shake-page"), 400);
+    }
+
+    function activateButton(activeBtn, inactiveBtn) {
+      activeBtn.classList.add("active");
+      inactiveBtn.classList.remove("active");
+    }
+
+    btnLogin.onclick = () => {
       signupForm.classList.add("d-none");
-      btnLogin.classList.add("btn-primary");
-      btnLogin.classList.remove("btn-outline-primary");
-      btnSignup.classList.remove("btn-primary");
-      btnSignup.classList.add("btn-outline-primary");
-      authImage.src = "../inventory_project/assets/images/image-login.png"; // صورة تسجيل الدخول
-      formTitle.textContent = "Welcome to Warezo";
-      formSub.textContent = "Enter your details to get started";
+      loginForm.classList.remove("d-none");
+      activateButton(btnLogin, btnSignup);
+      authImage.src = "../inventory_project/assets/images/image-login.png";
+      formTitle.textContent = "Welcome Back 👋";
+      formSub.textContent = "Please login to access your dashboard";
+    };
+
+    btnSignup.onclick = () => {
+      loginForm.classList.add("d-none");
+      signupForm.classList.remove("d-none");
+      activateButton(btnSignup, btnLogin);
+      authImage.src = "../inventory_project/assets/images/image-login-2.png";
+      formTitle.textContent = "Create Your Account";
+      formSub.textContent = "Join us to manage your store easily";
+    };
+
+    document.querySelectorAll(".toggle-password").forEach(icon => {
+      icon.onclick = () => {
+        const input = icon.previousElementSibling;
+        input.type = input.type === "password" ? "text" : "password";
+        icon.classList.toggle("bi-eye");
+        icon.classList.toggle("bi-eye-slash");
+      };
     });
 
-    btnSignup.addEventListener("click", () => {
-      signupForm.classList.remove("d-none");
-      loginForm.classList.add("d-none");
-      btnSignup.classList.add("btn-primary");
-      btnSignup.classList.remove("btn-outline-primary");
-      btnLogin.classList.remove("btn-primary");
-      btnLogin.classList.add("btn-outline-primary");
-      authImage.src = "../inventory_project/assets/images/image-login- 2.png"; // صورة التسجيل
-      formTitle.textContent = "Create your account";
-      formSub.textContent = "Fill the form below to sign up";
-    });
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    signupForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("signup-name").value.trim();
+      const email = document.getElementById("signup-email").value.trim();
+      const pass = document.getElementById("signup-password").value;
+      const confirm = document.getElementById("signup-confirm").value;
+
+      if (!name || !isValidEmail(email) || pass.length < 6 || pass !== confirm) {
+        showAlert("Please fill fields correctly (password >= 6 chars)", "danger");
+        triggerShake();
+        return;
+      }
+
+      const passHash = await hashPassword(pass);
+      const user = { name, email, passHash };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      showAlert("Account created successfully!", "success");
+      setTimeout(() => {
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "Store_Dashboard.html";
+      }, 1200);
+    };
+
+    loginForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value.trim();
+      const pass = document.getElementById("login-password").value;
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!user) {
+        showAlert("No account found. Please sign up.", "danger");
+        triggerShake();
+        return;
+      }
+
+      const enteredHash = await hashPassword(pass);
+      if (user.email !== email || user.passHash !== enteredHash) {
+        showAlert("Email or password is incorrect", "danger");
+        triggerShake();
+        return;
+      }
+
+      if (document.getElementById("remember-me").checked) {
+        localStorage.setItem("loggedIn", "true");
+      } else {
+        sessionStorage.setItem("loggedIn", "true");
+      }
+
+      showAlert("Login successful!", "success");
+      setTimeout(() => window.location.href = "Store_Dashboard.html", 1000);
+    };
+
+    forgotPasswordLink.onclick = (e) => {
+      e.preventDefault();
+      forgotModal.show();
+    };
+
+    forgotForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("forgot-email").value.trim();
+      if (!isValidEmail(email)) {
+        showAlert("Enter a valid email", "danger");
+        triggerShake();
+        return;
+      }
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user || user.email !== email) {
+        showAlert("No account found with that email", "danger");
+        triggerShake();
+        return;
+      }
+
+      resetMessage.classList.remove("d-none");
+      setTimeout(async () => {
+        resetMessage.classList.add("d-none");
+        const newPass = prompt("Enter a new password (6+ chars):");
+        if (newPass && newPass.length >= 6) {
+          user.passHash = await hashPassword(newPass);
+          localStorage.setItem("user", JSON.stringify(user));
+          showAlert("Password changed locally. Please login with the new password.", "success");
+        } else {
+          showAlert("Password not changed (too short or cancelled).", "warning");
+        }
+        forgotModal.hide();
+      }, 1200);
+    };
   </script>
 </body>
 </html>
