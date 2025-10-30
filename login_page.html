@@ -9,7 +9,7 @@
 
   <style>
     :root {
-      --bg: #f8f9fa;
+      --bg: linear-gradient(135deg, #e3f2fd, #f8f9fa);
       --card: #ffffff;
       --muted: #6c757d;
       --primary: #0d6efd;
@@ -53,6 +53,7 @@
       max-width: 100%;
       border-radius: 10px;
       animation: floatImage 3s ease-in-out infinite alternate;
+      transition: opacity 0.4s ease;
     }
 
     @keyframes floatImage {
@@ -67,6 +68,7 @@
       justify-content: center;
       gap: 10px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .form-title {
@@ -104,6 +106,7 @@
       color: #fff !important;
       border-color: var(--primary) !important;
       transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(13, 110, 253, 0.4);
     }
 
     .auth-buttons .btn.active {
@@ -115,7 +118,7 @@
     }
 
     .auth-buttons .btn:not(.active) {
-      background-color: #fff !important;
+      background-color: #f1f5ff !important;
       color: var(--primary) !important;
       border-color: var(--primary) !important;
       box-shadow: none;
@@ -137,6 +140,13 @@
       .auth-image { display: none; }
       .auth-forms { width: 100%; padding: 24px; }
     }
+
+    @media (max-width: 480px) {
+      .form-title { font-size: 1.1rem; }
+      .auth-buttons { flex-direction: column; }
+      .auth-buttons .btn { width: 100%; }
+      .auth-container { box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+    }
   </style>
 </head>
 
@@ -146,7 +156,7 @@
       <img id="auth-image" src="../inventory_project/assets/images/image-login.png" alt="Login illustration" />
     </div>
 
-    <div class="auth-forms">
+    <div class="auth-forms fade-slide show">
       <div id="alert-box" class="alert d-none text-center" role="alert"></div>
 
       <div class="auth-buttons">
@@ -175,7 +185,10 @@
           </div>
           <a href="#" id="forgot-password" class="text-decoration-none text-primary">Forgot password?</a>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <button type="submit" class="btn btn-primary w-100">
+          <span class="spinner-border spinner-border-sm d-none" id="login-loader"></span>
+          <span id="login-text">Login</span>
+        </button>
       </form>
 
       <!-- Signup Form -->
@@ -192,6 +205,9 @@
           <label for="signup-password" class="form-label">Password</label>
           <input type="password" class="form-control" id="signup-password" placeholder="Create a password" required />
           <i class="bi bi-eye-slash toggle-password" title="Show / hide"></i>
+          <small class="text-muted">
+            Password must be at least 8 characters and include uppercase, lowercase, numbers, and a special symbol (#, @, !, $).
+          </small>
         </div>
         <div class="mb-3 password-wrapper">
           <label for="signup-confirm" class="form-label">Confirm Password</label>
@@ -203,39 +219,17 @@
     </div>
   </div>
 
-  <!-- Forgot Password Modal -->
-  <div class="modal fade" id="forgotModal" tabindex="-1" aria-labelledby="forgotModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="forgotModalLabel">Reset Password</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <form id="forgot-form" novalidate>
-            <div class="mb-3">
-              <label for="forgot-email" class="form-label">Enter your registered email</label>
-              <input type="email" class="form-control" id="forgot-email" placeholder="you@example.com" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Send reset link (demo)</button>
-          </form>
-          <p id="reset-message" class="text-center mt-3 text-success d-none">✅ Reset link sent (local demo)</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // redirect if already logged in
     if (localStorage.getItem("loggedIn") === "true" || sessionStorage.getItem("loggedIn") === "true") {
       window.location.href = "Store_Dashboard.html";
     }
 
     async function hashPassword(password) {
       const enc = new TextEncoder();
-      const data = enc.encode(password);
+      const salt = "warezo_secret_salt";
+      const data = enc.encode(password + salt);
       const hashBuffer = await crypto.subtle.digest('SHA-256', data);
       const hashArray = Array.from(new Uint8Array(hashBuffer));
       return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
@@ -248,12 +242,10 @@
     const authImage = document.getElementById("auth-image");
     const formTitle = document.getElementById("form-title");
     const formSub = document.getElementById("form-sub");
-    const forgotPasswordLink = document.getElementById("forgot-password");
-    const forgotModal = new bootstrap.Modal(document.getElementById("forgotModal"));
-    const forgotForm = document.getElementById("forgot-form");
-    const resetMessage = document.getElementById("reset-message");
     const alertBox = document.getElementById("alert-box");
     const authContainer = document.getElementById("auth-container");
+    const spinner = document.getElementById("login-loader");
+    const btnText = document.getElementById("login-text");
 
     function showAlert(message, type = "danger", timeout = 2600) {
       alertBox.textContent = message;
@@ -287,7 +279,7 @@
       loginForm.classList.add("d-none");
       signupForm.classList.remove("d-none");
       activateButton(btnSignup, btnLogin);
-      authImage.src = "../inventory_project/assets/images/image-login-2.png";
+      authImage.src = "../inventory_project/assets/images/image-login- 2.png";
       formTitle.textContent = "Create Your Account";
       formSub.textContent = "Join us to manage your store easily";
     };
@@ -301,9 +293,8 @@
       };
     });
 
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
+    function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+    function isStrongPassword(password) { return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#@!$]).{8,}$/.test(password); }
 
     signupForm.onsubmit = async (e) => {
       e.preventDefault();
@@ -312,15 +303,14 @@
       const pass = document.getElementById("signup-password").value;
       const confirm = document.getElementById("signup-confirm").value;
 
-      if (!name || !isValidEmail(email) || pass.length < 6 || pass !== confirm) {
-        showAlert("Please fill fields correctly (password >= 6 chars)", "danger");
-        triggerShake();
-        return;
-      }
+      if (!name) return showAlert("Please enter your name");
+      if (!isValidEmail(email)) return showAlert("Invalid email format");
+      if (!isStrongPassword(pass)) return showAlert("Password must be 8+ chars, include uppercase, lowercase, number, and one of # @ ! $");
+      if (pass !== confirm) return showAlert("Passwords do not match");
 
       const passHash = await hashPassword(pass);
       const user = { name, email, passHash };
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("user", btoa(JSON.stringify(user)));
 
       showAlert("Account created successfully!", "success");
       setTimeout(() => {
@@ -331,67 +321,34 @@
 
     loginForm.onsubmit = async (e) => {
       e.preventDefault();
+      spinner.classList.remove("d-none");
+      btnText.textContent = "Logging in...";
+
       const email = document.getElementById("login-email").value.trim();
       const pass = document.getElementById("login-password").value;
-      const user = JSON.parse(localStorage.getItem("user"));
+      const userData = localStorage.getItem("user");
 
-      if (!user) {
-        showAlert("No account found. Please sign up.", "danger");
+      if (!userData) {
+        showAlert("No account found. Please sign up.");
         triggerShake();
+        spinner.classList.add("d-none");
+        btnText.textContent = "Login";
         return;
       }
 
+      const user = JSON.parse(atob(userData));
       const enteredHash = await hashPassword(pass);
-      if (user.email !== email || user.passHash !== enteredHash) {
-        showAlert("Email or password is incorrect", "danger");
-        triggerShake();
-        return;
-      }
 
-      if (document.getElementById("remember-me").checked) {
-        localStorage.setItem("loggedIn", "true");
-      } else {
-        sessionStorage.setItem("loggedIn", "true");
+      if (user.email !== email || user.passHash !== enteredHash) {
+        showAlert("Email or password is incorrect");
+        triggerShake();
+        spinner.classList.add("d-none");
+        btnText.textContent = "Login";
+        return;
       }
 
       showAlert("Login successful!", "success");
       setTimeout(() => window.location.href = "Store_Dashboard.html", 1000);
-    };
-
-    forgotPasswordLink.onclick = (e) => {
-      e.preventDefault();
-      forgotModal.show();
-    };
-
-    forgotForm.onsubmit = async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("forgot-email").value.trim();
-      if (!isValidEmail(email)) {
-        showAlert("Enter a valid email", "danger");
-        triggerShake();
-        return;
-      }
-
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (!user || user.email !== email) {
-        showAlert("No account found with that email", "danger");
-        triggerShake();
-        return;
-      }
-
-      resetMessage.classList.remove("d-none");
-      setTimeout(async () => {
-        resetMessage.classList.add("d-none");
-        const newPass = prompt("Enter a new password (6+ chars):");
-        if (newPass && newPass.length >= 6) {
-          user.passHash = await hashPassword(newPass);
-          localStorage.setItem("user", JSON.stringify(user));
-          showAlert("Password changed locally. Please login with the new password.", "success");
-        } else {
-          showAlert("Password not changed (too short or cancelled).", "warning");
-        }
-        forgotModal.hide();
-      }, 1200);
     };
   </script>
 </body>
