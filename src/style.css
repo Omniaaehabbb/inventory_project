@@ -1,0 +1,425 @@
+/* =======================
+   🌿 General Page Styling
+======================= */
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* =======================
+   🧭 Sidebar
+======================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16.6667%;
+  height: 100vh;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* =======================
+   📦 Main Layout
+======================= */
+.main-content {
+  margin-left: 1.6667%;
+  padding: 20px;
+  display: flex;
+  gap: 25px;
+}
+
+/* =======================
+   🧰 Filters Section
+======================= */
+.filters {
+  width: 22%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filters h5 {
+  margin-bottom: 15px;
+}
+
+.filters h6 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+/* =======================
+   🛍 Product Catalog
+======================= */
+.product-section {
+  flex: 1;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* =======================
+   🚪 Logout Button
+======================= */
+.logout-btn {
+  background-color: #A53D42FF;
+  width: 100%;
+  height: 50px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.logout-btn:hover {
+  background-color: #8F3438;
+}
+
+/* =======================
+   📱 Responsive
+======================= */
+@media (max-width: 991px) {
+  .sidebar {
+    width: 25%;
+  }
+
+  .main-content {
+    margin-left: 25%;
+    flex-direction: column;
+  }
+
+  .filters {
+    width: 100%;
+  }
+
+  .product-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+    flex-direction: column;
+  }
+
+  .filters {
+    width: 100%;
+  }
+
+  .logout-btn {
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  .card img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card img {
+    height: 130px;
+  }
+
+  .logout-btn {
+    font-size: 14px;
+    height: 40px;
+  }
+}
+
+
+
+/*--------------------------------------------------------------------------*/
+
+/* =======================
+   🌟 Advanced Responsive Fixes
+======================= */
+
+/* 🔹 تحسين العرض على الشاشات المتوسطة (Tablet) */
+@media (max-width: 992px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 220px;
+    background-color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1200;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .navbar-toggler {
+    display: block !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+    padding: 15px;
+  }
+
+  .filters {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .product-section {
+    width: 100%;
+  }
+
+  .card img {
+    height: 160px;
+  }
+}
+
+/* 🔹 للشاشات الصغيرة جدًا (Mobile) */
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+
+  .filters h6 {
+    font-size: 14px;
+  }
+
+  .filters {
+    padding: 15px;
+  }
+
+  .filters div {
+    font-size: 13px;
+  }
+
+  .card {
+    margin-bottom: 15px;
+  }
+
+  .card img {
+    height: 140px;
+  }
+
+  .logout-btn {
+    font-size: 14px;
+    height: 42px;
+  }
+}
+
+/* 🔹 تحسين توزيع المنتجات */
+@media (max-width: 768px) {
+  .row.row-cols-1.row-cols-md-3.g-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+/* 🔹 تعديل عرض المحتوى عند فتح الـ Sidebar */
+body.sidebar-open .sidebar {
+  transform: translateX(0);
+}
+
+/* 🔹 زرار لفتح وإغلاق الـ Sidebar على الموبايل */
+.navbar .menu-btn {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .navbar .menu-btn {
+    display: inline-block;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+}
+
+
+
+
+/* تحسين شكل الأيقونات والريسبونسيف */
+.icons-group .btn {
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+  transition: transform 0.2s ease;
+}
+
+.icons-group .btn:hover {
+  transform: scale(1.1);
+}
+
+/* حجم صورة البروفايل */
+.profile-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* السلة في الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .search-form {
+    width: 100%;
+    margin-right: 10px;
+  }
+
+  .icons-group {
+    gap: 8px;
+  }
+
+  .profile-img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .cart-btn,
+  .notification-btn {
+    font-size: 1.2rem;
+  }
+}
+
+/* حجم أصغر جدًا للموبايل الصغير */
+@media (max-width: 480px) {
+  .search-form input {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .profile-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icons-group .btn {
+    font-size: 1.1rem;
+  }
+}
+
+
+
+
+
+/*----------------------------------*/
+
+/* ================================
+   🎬 Animation for Mobile Sidebar
+================================ */
+.offcanvas {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  border-right: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+/* عند الفتح */
+.offcanvas.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* عند الإغلاق */
+.offcanvas:not(.show) {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+/* تحسين شكل العنوان والأزرار داخلها */
+.offcanvas-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 15px 20px;
+}
+
+.offcanvas-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.offcanvas-body .nav-link {
+  color: #333;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.offcanvas-body .nav-link:hover {
+  color: #A53D42FF;
+}
+
+.offcanvas-body .logout-btn {
+  background-color: #A53D42FF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+.offcanvas-body .logout-btn:hover {
+  background-color: #8F3438;
+}
+
+
+
+
+
+
+
+
+
+
