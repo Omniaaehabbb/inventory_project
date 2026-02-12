@@ -1,0 +1,47 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+
+.logout-btn {
+    background-color: #bd0013;
+    width: 200px;
+    height: 50px;
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    bottom: 20px;
+    left: 20px;
+
+}
+
+.logout-btn:hover {
+    background-color: #82040d;
+}
+
+
+
+@media (max-width: 767px) {
+    .logout-btn {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
