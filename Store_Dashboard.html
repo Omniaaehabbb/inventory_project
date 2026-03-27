@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailCo Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap.min.css.map">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            height: 100vh;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+
+        .sidebar .nav-link {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .sidebar .nav-link.active {
+            background-color: #e9ecef;
+            font-weight: bold;
+        }
+
+        .card-stats {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .notification-box {
+            border-left: 5px solid #6f42c1;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .notification-box.warning {
+            border-left-color: #fd7e14;
+            background: #fff4e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-md-block sidebar border-end">
+                <div class="position-sticky">
+                    <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto px-3">
+                        <i class="bi bi-star-fill text-primary fs-4 me-2"></i>
+                        <span class="fs-5 fw-bold">ADLY</span>
+                    </a>
+                    <hr>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-house-door me-2"></i> Store Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-box-seam me-2"></i> Product Catalog
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-bag-check me-2"></i> Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-truck me-2"></i> Order Tracking
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-person me-2"></i> Profile Settings
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-danger w-100">
+                            <i class="bi bi-box-arrow-left me-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-10 ms-sm-auto px-md-4">
+                <!-- Header -->
+                <nav class="navbar navbar-light bg-light justify-content-between mt-2 rounded p-3">
+                    <form class="d-flex w-50">
+                        <input class="form-control me-2" type="search" placeholder="Search products, warehouses..."
+                            aria-label="Search"> <button class="btn btn-primary"> Search</button>
+                    </form>
+                    <div>
+                        <a href="#" class="me-3"><i class="bi bi-search fs-5"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-bell fs-5"></i></a>
+                        <a href="#"><img src="c:\Users\fdafv\Pictures\Screenshots\IMG-20250626-WA0117[1].jpg" style="width: 45px;" class="rounded-circle" alt="user"></a>
+                    </div>
+                </nav>
+
+                <!-- Welcome Section -->
+                <div class="bg-light rounded p-4 mt-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4>Welcome back, RetailCo!</h4>
+                        <p>Here's a snapshot of your store's performance and recent activities.</p>
+                    </div>
+                    <img src="c:\Users\fdafv\Pictures\Screenshots\Screenshot 2025-08-31 220145.png" alt="illustration">
+                </div>
+
+                <!-- Overview Cards -->
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                        <div class="card card-stats">
+                            <h5>Total Orders</h5>
+                            <h3>1,240</h3>
+                            <small class="text-muted"><i class="bi bi-clock"></i> Updated 5 min ago</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-stats">
+                            <h5>Pending Deliveries</h5>
+                            <h3>15</h3>
+                            <small class="text-muted"><i class="bi bi-clock"></i> Updated 10 min ago</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-stats">
+                            <h5>Items in Cart</h5>
+                            <h3>7</h3>
+                            <small class="text-muted"><i class="bi bi-clock"></i> Updated 1 hour ago</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-stats">
+                            <h5>New Arrivals</h5>
+                            <h3>85</h3>
+                            <small class="text-muted"><i class="bi bi-clock"></i> Updated 2 days ago</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <h5 class="mt-4">Notifications</h5>
+                <div class="notification-box">
+                    <i class="bi bi-bell me-2"></i>
+                    <strong>New Product Categories Available!</strong>
+                    <p>Explore the updated product catalog with exciting new categories like Organic Produce and
+                        Sustainable Goods.</p>
+                    <a href="#" class="btn btn-sm btn-primary">Browse Now</a>
+                </div>
+                <div class="notification-box warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>Review Pending Order #WZO-9876</strong>
+                    <p>An order from "Urban Market" is awaiting your confirmation. Please review details and approve
+                        shipment.</p>
+                    <a href="#" class="btn btn-sm btn-warning">View Order</a>
+                </div>
+
+                <!-- Recent Orders -->
+                <h5 class="mt-4">Recent Orders</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#WZO-1234</td>
+                                <td>Fresh Foods Inc.</td>
+                                <td>12</td>
+                                <td>$450.00</td>
+                                <!-- <td><span class="badge bg-success">Delivered</span></td> -->
+                                <td><button type="button" class="btn btn-success"> Delivered</button></td>
+                                <td>2024-07-28</td>
+                            </tr>
+                            <tr>
+                                <td>#WZO-1235</td>
+                                <td>Green Grocer</td>
+                                <td>5</td>
+                                <td>$120.50</td>
+                                <!-- <td><span class="badge bg-warning text-dark">Pending</span></td> -->
+                                <td><button type="button" class="btn btn-warning"> Pending </button></td>
+
+                                <td>2024-07-27</td>
+                            </tr>
+                            <tr>
+                                <td>#WZO-1236</td>
+                                <td>Corner Store</td>
+                                <td>8</td>
+                                <td>$210.00</td>
+                                <!-- <td><span class="badge bg-success">Delivered</span></td> -->
+                                <td><button type="button" class="btn btn-success"> Delivered</button></td>
+
+                                <td>2024-07-27</td>
+                            </tr>
+                            <tr>
+                                <td>#WZO-1237</td>
+                                <td>Daily Mart</td>
+                                <td>3</td>
+                                <td>$75.20</td>
+                                <!-- <td><span class="badge bg-danger">Cancelled</span></td> -->
+                                <td><button type="button" class="btn btn-danger"> Cancelled</button></td>
+
+                                <td>2024-07-26</td>
+                            </tr>
+                            <tr>
+                                <td>#WZO-1238</td>
+                                <td>Super Save</td>
+                                <td>15</td>
+                                <td>$690.00</td>
+                                <!-- <td><span class="badge bg-success">Delivered</span></td> -->
+                                <td><button type="button" class="btn btn-success"> Delivered</button></td>
+
+                                <td>2024-07-25</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Quick Actions -->
+                <h5 class="mt-4">Quick Actions</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card text-center p-3">
+                            <i class="bi bi-box-seam fs-2 mb-2"></i>
+                            <h6>Explore Products</h6>
+                            <p>Discover new items from our latest collections.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Go</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center p-3">
+                            <i class="bi bi-truck fs-2 mb-2"></i>
+                            <h6>Track Shipments</h6>
+                            <p>Monitor the delivery status of your active orders.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Go</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center p-3">
+                            <i class="bi bi-person-circle fs-2 mb-2"></i>
+                            <h6>Manage Account</h6>
+                            <p>Update your profile, billing, and store settings.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Go</a>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="bootstrap.bundle.js.map"></script>
+     <script src="bootstrap.bundle.min.js.map"></script>
+</body>
+
+</html>
